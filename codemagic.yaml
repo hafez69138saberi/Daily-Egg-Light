@@ -1,0 +1,44 @@
+workflows:
+  ios-native-workflow:
+    name: iOS Native
+    max_build_duration: 120
+    integrations:
+      app_store_connect: Daily Egg Light
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.volodymyrdudnyk
+      vars:
+        BUNDLE_ID: "com.volodymyrdudnyk"
+        XCODE_PROJECT: "VictoryTracker.xcodeproj"
+        XCODE_SCHEME: "VictoryTracker"
+        APP_STORE_APPLE_ID: 6754684475
+        TEAM_ID: "D3XKW77QS2"
+      xcode: 16.3
+    scripts:
+      - name: Set up provisioning profiles settings on Xcode project
+        script: xcode-project use-profiles
+
+      - name: Build ipa for distribution
+        script: |
+          xcode-project build-ipa \
+            --project "$CM_BUILD_DIR/$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+
+    publishing:
+      email:
+        recipients:
+          - hafez69138saberi@gmail.com
+        notify:
+          success: true
+          failure: false
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: false
+        submit_to_app_store: false
