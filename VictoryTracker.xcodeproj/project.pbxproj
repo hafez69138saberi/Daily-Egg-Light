@@ -6,13 +6,33 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		27602FEC2EC4A05B004BBB81 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 27602FEB2EC4A05B004BBB81 /* AppsFlyerLib */; };
+		27602FEF2EC4A1AE004BBB81 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 27602FEE2EC4A1AE004BBB81 /* FirebaseCore */; };
+		27602FF12EC4A1AE004BBB81 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 27602FF02EC4A1AE004BBB81 /* FirebaseDatabase */; };
+		27602FF32EC4A1AE004BBB81 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 27602FF22EC4A1AE004BBB81 /* FirebaseMessaging */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		278AE8B92EB2B97A00CB50EF /* VictoryTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VictoryTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2760305B2EC4A353004BBB81 /* Exceptions for "VictoryTracker" folder in "VictoryTracker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 278AE8B82EB2B97A00CB50EF /* VictoryTracker */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		278AE8BB2EB2B97A00CB50EF /* VictoryTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2760305B2EC4A353004BBB81 /* Exceptions for "VictoryTracker" folder in "VictoryTracker" target */,
+			);
 			path = VictoryTracker;
 			sourceTree = "<group>";
 		};
@@ -23,6 +43,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27602FF32EC4A1AE004BBB81 /* FirebaseMessaging in Frameworks */,
+				27602FF12EC4A1AE004BBB81 /* FirebaseDatabase in Frameworks */,
+				27602FEF2EC4A1AE004BBB81 /* FirebaseCore in Frameworks */,
+				27602FEC2EC4A05B004BBB81 /* AppsFlyerLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +89,10 @@
 			);
 			name = VictoryTracker;
 			packageProductDependencies = (
+				27602FEB2EC4A05B004BBB81 /* AppsFlyerLib */,
+				27602FEE2EC4A1AE004BBB81 /* FirebaseCore */,
+				27602FF02EC4A1AE004BBB81 /* FirebaseDatabase */,
+				27602FF22EC4A1AE004BBB81 /* FirebaseMessaging */,
 			);
 			productName = VictoryTracker;
 			productReference = 278AE8B92EB2B97A00CB50EF /* VictoryTracker.app */;
@@ -94,6 +122,10 @@
 			);
 			mainGroup = 278AE8B02EB2B97A00CB50EF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				27602FEA2EC4A05B004BBB81 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+				27602FED2EC4A1AE004BBB81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 278AE8BA2EB2B97A00CB50EF /* Products */;
 			projectDirPath = "";
@@ -249,23 +281,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VictoryTracker/VictoryTracker.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VictoryTracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Daily Egg Light";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use your camera to take photos directly within the app.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We use your microphone to record audio for your in-app experience.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to let you select and upload images.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We use your data to deliver a more personalized experience and relevant ads.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.volodymyrdudnyk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -284,23 +321,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VictoryTracker/VictoryTracker.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VictoryTracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Daily Egg Light";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use your camera to take photos directly within the app.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We use your microphone to record audio for your in-app experience.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to let you select and upload images.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "We use your data to deliver a more personalized experience and relevant ads.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.volodymyrdudnyk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -336,6 +378,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		27602FEA2EC4A05B004BBB81 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.17.7;
+			};
+		};
+		27602FED2EC4A1AE004BBB81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27602FEB2EC4A05B004BBB81 /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27602FEA2EC4A05B004BBB81 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+		27602FEE2EC4A1AE004BBB81 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27602FED2EC4A1AE004BBB81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		27602FF02EC4A1AE004BBB81 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27602FED2EC4A1AE004BBB81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		27602FF22EC4A1AE004BBB81 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27602FED2EC4A1AE004BBB81 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 278AE8B12EB2B97A00CB50EF /* Project object */;
 }
