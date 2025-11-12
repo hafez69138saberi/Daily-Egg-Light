@@ -42,10 +42,12 @@ final class LaunchViewController: UIViewController {
             }
         }
     }
-
+    
     private func openWebView(with url: URL) {
-        OrientationManager.shared.mask = .all 
-        let vc = WebContainerViewController(url: url)
+        OrientationManager.shared.mask = .all
+        let swiftUIView = CustomWebView(main_link: url.absoluteString,
+                                        customUserAgent: MyConstants.webUserAgent)
+        let vc = UIHostingController(rootView: swiftUIView)
         setRoot(vc)
         UIViewController.attemptRotationToDeviceOrientation()
     }
@@ -62,6 +64,3 @@ final class LaunchViewController: UIViewController {
         (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController = vc
     }
 }
-
-
-
