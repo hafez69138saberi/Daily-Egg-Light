@@ -12,7 +12,7 @@ final class WebViewCoordinator: NSObject, WKNavigationDelegate, WKUIDelegate, UI
         _canGoBack = canGoBack
         _canGoForward = canGoForward
     }
-
+    
     func updateNavigationButtons(for webView: WKWebView) {
         canGoBack = webView.canGoBack || webViewStack.count > 1
         canGoForward = webView.canGoForward
@@ -163,7 +163,7 @@ struct CustomWebView: View {
                     )
                     .ignoresSafeArea(edges: .bottom)
                 } else {
-                    Text("URL")
+                    Text("")
                         .foregroundColor(.white)
                         .padding(.top, 40)
                 }

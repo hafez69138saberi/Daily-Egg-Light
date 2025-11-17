@@ -17,7 +17,6 @@ struct AdServicesTokenProvider {
                 return nil
             }
             let base64 = data.base64EncodedString()
-
             return base64
         } catch {
             return nil

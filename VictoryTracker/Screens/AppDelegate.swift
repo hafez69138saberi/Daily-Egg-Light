@@ -5,6 +5,14 @@ import AppsFlyerLib
 import AppTrackingTransparency
 
 
+enum MyConstants {
+    static let webUserAgent =
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1"
+
+    static let udidKey = "device_uuid_lower"
+    static let finalURLCacheKey = "cached_final_url"
+}
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -12,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         FirebaseApp.configure()
+      
         
          UNUserNotificationCenter.current().delegate = self
          UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
@@ -28,12 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          
         
         TokenStore.shared.start()
-        Messaging.messaging().delegate = self
-        UNUserNotificationCenter.current().delegate = self
         
         AppsFlyerLib.shared().appsFlyerDevKey = "P8Cmc5f5JjkNjQ3haoGbWS"
-        AppsFlyerLib.shared().appleAppID = "6754684475"
-        AppsFlyerLib.shared().delegate = self
+        AppsFlyerLib.shared().appleAppID     = "6754684475"
+        AppsFlyerLib.shared().delegate       = self
+        
         AppsFlyerLib.shared().start()
         
         let uuid = DeviceIDProvider.persistedLowerUUID()
@@ -48,33 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         return true
     }
-    
-    private func requestATTAndStartSDKs() {
-        guard #available(iOS 14.5, *) else {
-            startSDKsWithCurrentPrivacyState()
-            return
-        }
-
-        ATTrackingManager.requestTrackingAuthorization { status in
-            DispatchQueue.main.async {
-                self.startSDKsWithCurrentPrivacyState()
-            }
-        }
-    }
-
-    private func startSDKsWithCurrentPrivacyState() {
-        if #available(iOS 14.5, *) {
-            let status = ATTrackingManager.trackingAuthorizationStatus
-            switch status {
-            case .authorized:
-                print("")
-            default:
-                print("")
-            }
-        }
-
-        AppsFlyerLib.shared().start()
-    }
+ 
     
     private func requestTrackingAuthorization() {
             if #available(iOS 14, *) {
@@ -93,14 +76,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             } else {
-                
+                print("")
             }
         }
     
     func application(_ application: UIApplication,
                      supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         let m = OrientationManager.shared.mask
-        
         return m
     }
     
@@ -127,5 +109,14 @@ extension AppDelegate: AppsFlyerLibDelegate {
     func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
     }
     func onConversionDataFail(_ error: Error) {
+    }
+}
+
+enum DeviceIDProvider {
+    static func persistedLowerUUID() -> String {
+        if let v = UserDefaults.standard.string(forKey: MyConstants.udidKey) { return v }
+        let u = UUID().uuidString.lowercased()
+        UserDefaults.standard.set(u, forKey: MyConstants.udidKey)
+        return u
     }
 }

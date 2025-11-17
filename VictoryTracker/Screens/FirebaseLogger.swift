@@ -16,7 +16,9 @@ struct FirebaseLogger {
 
         dbRef.child("sessions").child(uuid).setValue(sessionData) { error, _ in
             if let error = error {
+                print(" \(error.localizedDescription)")
             } else {
+                print("\(uuid)")
             }
         }
     }
@@ -39,6 +41,7 @@ struct FirebaseLogger {
                  if let error = error {
                      print("\(error.localizedDescription)")
                  } else {
+                     print("\(name)")
                  }
              }
     }
