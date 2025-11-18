@@ -23,13 +23,6 @@ final class TokenStore: NSObject, MessagingDelegate {
             if let token { self?.fcmToken = token }
             else { print("\(error?.localizedDescription ?? "nil")") }
         }
-
-        #if DEBUG
-        if ProcessInfo.processInfo.environment["SIMULATOR_DEVICE_NAME"] != nil || self.fcmToken == nil {
-            let mock = "sim-\(UUID().uuidString.lowercased())"
-            self.fcmToken = mock
-        }
-        #endif
     }
 
     func waitForFCMToken(timeoutSec: TimeInterval, _ cb: @escaping (String?) -> Void) {
