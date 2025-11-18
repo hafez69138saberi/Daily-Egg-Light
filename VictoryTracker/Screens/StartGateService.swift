@@ -105,8 +105,8 @@ final class StartGateService {
                             return t
                         }
                         
-                        let partA = trim(json["bat"] as? String) ?? trim(json["beam"] as? String)
-                        let partB = trim(json["man"] as? String) ?? trim(json["cyan"] as? String)
+                        let partA = trim(json["bat"] as? String) ?? trim(json["mark"] as? String)
+                        let partB = trim(json["man"] as? String) ?? trim(json["time"] as? String)
                         
                         let parts: [String] = {
                             if let a = partA, let b = partB { return [a, b] }
